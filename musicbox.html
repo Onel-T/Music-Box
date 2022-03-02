@@ -1,61 +1,107 @@
 <!DOCTYPE html>
 <html>
-<header> MUSIC BOX</header>
+<style>
+    .content {
+        max-width: 580px;
+        margin: auto;
+    }
 
-<body>
-    <textarea id="textBox" rows="4" cols="10">
+    .button {
+        display: inline-block;
+        padding: 0.35em 0.8em;
+        border: 0.13em solid #000000;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.12em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        color: #000000;
+        text-align: center;
+        transition: all 0.2s;
+        animation: bouncy 5s infinite linear;
+        position: relative;
+    }
+
+    .button:hover {
+        color: #fdfdfd;
+        background-color: #5cb6c2;
+    }
+    .button:active {
+        color: #36ff0e;
+        background-color: #751de9;
+    }
+
+    @media all and (max-width:30em) {
+        .button1 {
+            display: block;
+            margin: 0.4em auto;
+        }
+    }
+
+    @keyframes bouncy {
+        0% {
+            top: 0em
+        }
+
+        40% {
+            top: 0em
+        }
+
+        43% {
+            top: -0.9em
+        }
+
+        46% {
+            top: 0em
+        }
+
+        48% {
+            top: -0.4em
+        }
+
+        50% {
+            top: 0em
+        }
+
+        100% {
+            top: 0em;
+        }
+    }
+</style>
+
+<body style="background-color: beige;">
+
+    <div class="content">
+        <header><b>MUSIC BOX</b></header>
+        <textarea id="textBox" rows="15" cols="10" autocorrect="off"
+            style="background-color:rgb(209, 166, 109); font-size: larger;">
 A
  B
-  C
+ BC
    D
-    </textarea>
+ABCD
+ B D
+A  D
+AB
+ABCD
+  CD
+   D
+   D</textarea>
+        
+        <script src="noteplaying.js"></script>
 
-    <button onclick="play_notes();">Play Music </button>
+        <button class="button" onclick="play_notes();">Play Music</button>
 
-    <script>
-        function play_notes() {
-            song = document.getElementById("textBox").value;
-            //console.log(song);
+        <textarea id="compiled" rows="18" cols="40">*******       COMPILED HTML        *******</textarea>
 
-            // Splits each line places into array
-            lines = song.split(/\r?\n/);
-            console.log("Lines: ", lines);
+        <marquee behavior="alternate" direction="left">
+            <img src="pianopicture.png" alt="Piano Image">
+        </marquee>
 
-            // Iterates through each character in each line to play audio
-            for (i = 0; i < lines.length; i++) {
-                console.log(lines[i]);
+        
 
-                if (lines[i][0] == "A") {
-                    console.log("Play A");
-                    setTimeout(function () {
-                        new Audio('PianoKey1.mp3').play();
-                    }, 200) 
-                }
-
-                if (lines[i][1] == "B") {
-                    console.log("Play B");
-                    setTimeout(function () {
-                        new Audio('PianoKey2.mp3').play();
-                    }, 1500)
-                }
-
-                if (lines[i][2] == "C") {
-                    console.log("Play C");
-                    setTimeout(function () {
-                        new Audio('PianoKey3.mp3').play();
-                    }, 3000)
-                }
-
-                if (lines[i][3] == "D") {
-                    console.log("Play D");
-                    setTimeout(function () {
-                        new Audio('PianoKey4.mp3').play();
-                    }, 4000)
-                }
-            }
-        }
-    </script>
-
+    </div>
 </body>
 
 </html>
